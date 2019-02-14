@@ -16,7 +16,6 @@ if __name__ == "__main__":
     opts.add_argument('--no-sandbox')
     opts.add_argument('--verbose')
     opts.add_experimental_option("prefs", {
-        "download.default_directory": "C:\\tmp",
         "download.prompt_for_download": False,
         "download.directory_upgrade": True,
         "safebrowsing_for_trusted_sources_enabled": False,
