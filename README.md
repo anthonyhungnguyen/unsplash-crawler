@@ -1,7 +1,7 @@
 # unsplash-crawler
 A tool to scrape enormous images from Unsplash.com
 ## Prerequisites
-You need to install python environment
+You need to install python 3 environment
 ```
 https://www.python.org/downloads/
 ```
