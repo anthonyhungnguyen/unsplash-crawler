@@ -3,6 +3,7 @@
 author: Anthony Hung Nguen
 date_created: 14/2/2019
 '''
+
 from selenium.webdriver import Chrome, ChromeOptions
 from selenium.webdriver.chrome.options import Options
 import supplement as sp
@@ -22,14 +23,14 @@ if __name__ == "__main__":
         "safebrowsing.enabled": False
     })
     opts.add_argument('--disable-gpu')
-    opts.add_argument("--window-size=400x300")
     opts.add_argument('--disable-software-rasterizer')
 
     scroll = int(input('Enter scroll times: '))
     if len(str(scroll)) < 1:
         scroll = 0
     while True:
-        choice = int(input('1. Search\n2. Collections\nEnter your choice: '))
+        choice = int(
+            input('1. Search\n2. Categories\n3. Collections\nEnter your choice: '))
         if choice == 1:
             query = input('Enter your search: ')
             result_folder = "./images-" + query + \
@@ -40,7 +41,19 @@ if __name__ == "__main__":
             browser = Chrome(options=opts)
             sp.extract_and_save_imgs(browser, img_url, scroll, result_folder)
             break
-        elif choice == 2:
+        if choice == 2:
+            browser = Chrome(options=opts)
+            cate = sp.display_categories(browser)
+            href = cate.get_attribute('href')
+            result_folder = "./images-" + cate.text + \
+                "/" if len(cate.text) > 1 else "./images/"
+            browser.quit()
+            prefs = {"download.default_directory": os.getcwd() + result_folder}
+            opts.add_experimental_option("prefs", prefs)
+            browser = Chrome(options=opts)
+            sp.extract_and_save_imgs(browser, href, scroll, result_folder)
+            break
+        elif choice == 3:
             browser = Chrome(options=opts)
             name, href = sp.extract_href_and_name(browser, scroll)
             for i in range(1, len(name)):
