@@ -23,7 +23,7 @@ cd path\to\your\files
 ```
 python main.py
 ```
-3. Enter number of scroll times, and choose your choice
+3. Enter number of scroll times, and choose your options
 ## Built with
 * [Python](https://www.python.org/) - The language used
 * [Selenium](https://www.seleniumhq.org/) - Tool for website automation
