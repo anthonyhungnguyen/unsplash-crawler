@@ -3,6 +3,7 @@
 author: Anthony Hung Nguen
 date_created: 14/2/2019
 '''
+
 import time
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
@@ -96,3 +97,17 @@ def load_more(browser):
     button = browser.find_element_by_xpath(
         "//button[@class='_37zTg _1l4Hh _1CBrG _3TTOE NDx0k _2Xklx']")
     browser.execute_script("arguments[0].click();", button)
+
+
+def display_categories(browser):
+    browser.get('https://unsplash.com/')
+    categories = browser.find_elements_by_xpath(
+        "//a[@class='SI2Kz _1CBrG xLon9']")
+    for i in range(1, len(categories)):
+        print('%d. %s' % (i, categories[i-1].text))
+    while True:
+        choice = int(input('Enter your choice: '))
+        if choice >= 1 and choice <= len(categories):
+            return categories[choice - 1]
+        else:
+            print('Incorrect choice. Please try again')
