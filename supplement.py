@@ -1,3 +1,8 @@
+''' Tool for scraping data from Unsplash.com
+
+author: Anthony Hung Nguen
+date_created: 14/2/2019
+'''
 import time
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
