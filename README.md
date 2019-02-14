@@ -10,7 +10,6 @@ Then, install some packages
 pip install selenium
 pip install pathlib
 ```
-For MacOS, go and search for chromedriver's MacOS version and place in same folder
 ## Installation
 ```
 git clone https://github.com/anthonyhungnguyen/unsplash-crawler.git
