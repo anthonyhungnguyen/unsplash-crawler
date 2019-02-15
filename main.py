@@ -29,8 +29,11 @@ if __name__ == "__main__":
     if len(str(scroll)) < 1:
         scroll = 0
     while True:
-        choice = int(
-            input('1. Search\n2. Categories\n3. Collections\nEnter your choice: '))
+        try:
+            choice = int(
+                input('1. Search\n2. Categories\n3. Collections\nEnter your choice: '))
+        except:
+            print('Please enter a number. Try again later')
         if choice == 1:
             query = input('Enter your search: ')
             result_folder = "./images-" + query + \
@@ -52,7 +55,11 @@ if __name__ == "__main__":
             opts.add_experimental_option("prefs", prefs)
             browser = Chrome(options=opts)
             sp.extract_and_save_imgs(browser, href, scroll, result_folder)
-            break
+            want_continue = input('Want more?(Y/n): ')
+            if want_continue.lower() == 'y':
+                continue
+            else:
+                break
         elif choice == 3:
             browser = Chrome(options=opts)
             name, href = sp.extract_href_and_name(browser, scroll)
@@ -83,6 +90,6 @@ if __name__ == "__main__":
         else:
             print('Incorrect choice. Please try again')
 
-    close_now = input('You want to close your browser?: ')
+    close_now = input('You want to close your browser?(Y/n): ')
     if close_now.lower() == 'y':
         browser.quit()
