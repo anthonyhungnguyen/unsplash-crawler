@@ -55,7 +55,7 @@ if __name__ == "__main__":
             opts.add_experimental_option("prefs", prefs)
             browser = Chrome(options=opts)
             sp.extract_and_save_imgs(browser, href, scroll, result_folder)
-            want_continue = input('Want more?(Y/n): ')
+            want_continue = input('Want more ?(Y/n): ')
             if want_continue.lower() == 'y':
                 continue
             else:
